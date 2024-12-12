@@ -1,8 +1,6 @@
+"""module pour manipuler les csv"""
 #### Imports et définition des variables globales
-import random
-
 FILENAME = "listes.csv"
-
 #### Fonctions secondaires
 
 def read_data(filename):
@@ -15,33 +13,43 @@ def read_data(filename):
         list: le contenu du fichier (1 list par ligne)
     """
     l = []
+    with open(filename, mode = 'r', encoding='utf8') as f:
+        for line in f:
+            l.append([int(x) for x in line.split(";")])
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """retourne ke k-ieme element de la liste du fichier"""
+    return data[k]
 
 def get_first(l):
-    return None
+    """ retourne le premier element de la liste du fichier"""
+    return l[0]
 
 def get_last(l):
-    return None
+    """ retourne le dernier element de la liste du fichier"""
+    return l[-1]
 
 def get_max(l):
-    return None
+    """ retourne le maximum de la liste du fichier"""
+    return max(l)
 
 def get_min(l):
-    return None
+    """ retourne le minimum de la liste du fichier"""
+    return min(l)
 
 def get_sum(l):
-    return None
+    """retourne la somme des éléments d'une liste"""
+    return sum(l)
 
 
 #### Fonction principale
 
 
 def main():
-    pass
+    """main"""
+    print(read_data("listes.csv"))
+    print(get_list_k(read_data("listes.csv"),0))
     # data = read_data(FILENAME)
     # for i, l in enumerate(data):
     #     print(i, l)
